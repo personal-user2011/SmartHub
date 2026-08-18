@@ -1,0 +1,4008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartHub 9 — Class 9 Student Hub</title>
+
+<style>
+/* =========================================================
+   SMART HUB 9 — COMPLETE SINGLE FILE WEBSITE
+   HTML + CSS + JAVASCRIPT
+   ========================================================= */
+
+:root {
+    --primary: #3157e8;
+    --primary2: #6338d9;
+    --text: #18233f;
+    --muted: #667085;
+    --bg: #f7f8fc;
+    --card: #ffffff;
+    --border: #e5e7ef;
+    --soft: #eef2ff;
+    --danger: #dc3545;
+    --success: #16834d;
+    --shadow: 0 10px 30px rgba(25, 35, 75, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 21px;
+    font-weight: 800;
+    color: #1e397e;
+}
+
+.logo-icon {
+    font-size: 25px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-btn {
+    border: none;
+    background: transparent;
+    padding: 11px 15px;
+    border-radius: 9px;
+    color: #273149;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+    background: #eaf0ff;
+    color: var(--primary);
+}
+
+.theme-btn {
+    width: 43px;
+    height: 43px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    background: #fff;
+    font-size: 19px;
+    margin-left: 12px;
+}
+
+/* =========================================================
+   PAGE SYSTEM
+   ========================================================= */
+
+.page {
+    display: none;
+    max-width: 1200px;
+    margin: auto;
+    padding: 42px 25px 70px;
+}
+
+.page.active {
+    display: block;
+}
+
+.page-title {
+    font-size: 39px;
+    margin: 0 0 8px;
+    font-weight: 800;
+}
+
+.page-subtitle {
+    color: var(--muted);
+    margin: 0 0 30px;
+    font-size: 17px;
+}
+
+/* =========================================================
+   HOME HERO
+   ========================================================= */
+
+.hero {
+    min-height: 500px;
+    border-radius: 24px;
+    padding: 72px 65px;
+    background: linear-gradient(115deg, #254eea 0%, #2f46df 48%, #713ad5 100%);
+    color: white;
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr;
+    gap: 45px;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero:before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    right: -120px;
+    top: -130px;
+}
+
+.hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.17);
+    border-radius: 20px;
+    padding: 9px 15px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-size: 58px;
+    line-height: 1.03;
+    margin: 0 0 25px;
+    max-width: 700px;
+}
+
+.hero p {
+    max-width: 690px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.88);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.hero-btn {
+    border: none;
+    border-radius: 10px;
+    padding: 15px 22px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.hero-btn.primary {
+    color: #27358d;
+    background: white;
+}
+
+.hero-btn.secondary {
+    color: white;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+}
+
+.hero-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+.dashboard-card {
+    background: rgba(255,255,255,0.13);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 27px;
+    position: relative;
+}
+
+.dashboard-label {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.dashboard-number {
+    font-size: 49px;
+    font-weight: 800;
+    margin: 8px 0;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.dashboard-mini {
+    background: rgba(255,255,255,0.12);
+    border-radius: 13px;
+    padding: 18px;
+}
+
+.dashboard-mini strong {
+    display: block;
+    font-size: 21px;
+    margin-bottom: 5px;
+}
+
+/* =========================================================
+   HOME MODULES
+   ========================================================= */
+
+.section-heading {
+    font-size: 31px;
+    margin: 55px 0 20px;
+}
+
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.module-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+}
+
+.module-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+}
+
+.module-card h3 {
+    margin: 0 0 10px;
+    font-size: 20px;
+}
+
+.module-card p {
+    margin: 0;
+    line-height: 1.55;
+    color: var(--muted);
+}
+
+/* =========================================================
+   SUBJECTS
+   ========================================================= */
+
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.subject-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 26px;
+    min-height: 245px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+.subject-icon {
+    font-size: 39px;
+    margin-bottom: 15px;
+}
+
+.subject-card h3 {
+    margin: 0 0 10px;
+    font-size: 21px;
+}
+
+.subject-card p {
+    color: var(--muted);
+    line-height: 1.5;
+    flex: 1;
+}
+
+.open-btn {
+    border: none;
+    background: #eef2ff;
+    color: #2144b5;
+    border-radius: 8px;
+    padding: 11px 14px;
+    font-weight: 700;
+}
+
+.open-btn:hover {
+    background: #dfe7ff;
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(9, 15, 35, 0.62);
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-box {
+    background: var(--card);
+    width: min(900px, 96vw);
+    max-height: 88vh;
+    overflow-y: auto;
+    border-radius: 20px;
+    padding: 28px;
+    position: relative;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.25);
+}
+
+.modal-close {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    border: none;
+    background: #f1f2f5;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.modal-header {
+    padding-right: 55px;
+}
+
+.modal-header h2 {
+    margin: 0 0 7px;
+    font-size: 29px;
+}
+
+.modal-header p {
+    color: var(--muted);
+}
+
+.modal-top-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 25px 0;
+}
+
+.modal-feature {
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.modal-feature h3 {
+    margin-top: 0;
+}
+
+.topic-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.topic {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 19px;
+}
+
+.topic h4 {
+    margin: 0 0 8px;
+    font-size: 17px;
+}
+
+.topic p {
+    color: var(--muted);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* =========================================================
+   QUIZ
+   ========================================================= */
+
+.quiz-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+}
+
+.quiz-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 17px;
+}
+
+.quiz-question-number {
+    font-weight: 700;
+}
+
+.quiz-score {
+    font-weight: 700;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #e9ebf2;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 28px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg,var(--primary),var(--primary2));
+    transition: 0.3s;
+}
+
+.question {
+    font-size: 27px;
+    line-height: 1.3;
+    margin: 25px 0;
+}
+
+.option {
+    width: 100%;
+    display: block;
+    text-align: left;
+    background: white;
+    border: 1px solid #dfe3ec;
+    border-radius: 11px;
+    padding: 16px;
+    margin: 11px 0;
+    transition: 0.2s;
+}
+
+.option:hover {
+    border-color: #7d95e8;
+    background: #f7f9ff;
+}
+
+.option.correct {
+    border-color: #2e9b68;
+    background: #e9f8f0;
+}
+
+.option.wrong {
+    border-color: #dd5a67;
+    background: #fff0f1;
+}
+
+.quiz-bottom {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.next-btn,
+.primary-btn {
+    border: none;
+    background: var(--primary);
+    color: white;
+    padding: 13px 22px;
+    border-radius: 9px;
+    font-weight: 700;
+}
+
+.secondary-btn {
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--text);
+    padding: 12px 18px;
+    border-radius: 9px;
+    font-weight: 700;
+}
+
+.result-box {
+    text-align: center;
+    padding: 35px;
+}
+
+.result-score {
+    font-size: 60px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+/* =========================================================
+   NOTES
+   ========================================================= */
+
+.search-box {
+    width: 100%;
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: white;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+.search-box:focus {
+    border-color: var(--primary);
+}
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.note-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 23px;
+    min-height: 180px;
+    box-shadow: var(--shadow);
+}
+
+.note-subject {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 13px;
+}
+
+.note-card h3 {
+    margin: 0 0 10px;
+}
+
+.note-card p {
+    color: var(--muted);
+    line-height: 1.55;
+}
+
+/* =========================================================
+   ASSISTANT
+   ========================================================= */
+
+.assistant-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr;
+    gap: 22px;
+}
+
+.assistant-panel,
+.how-panel {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+}
+
+.chat-area {
+    min-height: 330px;
+    max-height: 430px;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+.chat-message {
+    padding: 14px 16px;
+    border-radius: 13px;
+    margin: 10px 0;
+    max-width: 88%;
+    line-height: 1.5;
+}
+
+.chat-message.bot {
+    background: #f1f4ff;
+    margin-right: auto;
+}
+
+.chat-message.user {
+    background: var(--primary);
+    color: white;
+    margin-left: auto;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 14px 0;
+}
+
+.chip {
+    border: 1px solid var(--border);
+    background: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.ask-row {
+    display: flex;
+    gap: 9px;
+}
+
+.ask-input {
+    flex: 1;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    outline: none;
+}
+
+.example-list {
+    padding-left: 20px;
+    line-height: 2;
+    color: var(--muted);
+}
+
+/* =========================================================
+   PLANNER
+   ========================================================= */
+
+.planner-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr;
+    gap: 22px;
+}
+
+.panel {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+}
+
+.task-add {
+    display: flex;
+    gap: 9px;
+}
+
+.task-input {
+    flex: 1;
+    border: 1px solid var(--border);
+    padding: 14px;
+    border-radius: 10px;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.task span {
+    flex: 1;
+}
+
+.task.done span {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.delete-task {
+    border: none;
+    background: #ffe8e9;
+    color: #c92c3b;
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-weight: bold;
+}
+
+.timer {
+    text-align: center;
+}
+
+.timer-display {
+    font-size: 62px;
+    font-weight: 800;
+    margin: 30px 0;
+}
+
+.timer-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+}
+
+.stat-card h3 {
+    font-size: 16px;
+    margin: 0 0 15px;
+}
+
+.stat-number {
+    font-size: 42px;
+    font-weight: 800;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    background: #101c3b;
+    color: white;
+    padding: 50px 25px;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 50px;
+}
+
+footer h3 {
+    margin-top: 0;
+}
+
+footer p,
+footer li {
+    color: #bbc5dc;
+    line-height: 1.7;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+body.dark {
+    --text: #edf1ff;
+    --muted: #aab2c7;
+    --bg: #0d1220;
+    --card: #151c2d;
+    --border: #293248;
+    --soft: #1d2947;
+}
+
+body.dark header {
+    background: rgba(13,18,32,0.96);
+}
+
+body.dark .nav-btn {
+    color: #e9edff;
+}
+
+body.dark .nav-btn:hover,
+body.dark .nav-btn.active {
+    background: #202d4d;
+}
+
+body.dark .theme-btn,
+body.dark .secondary-btn,
+body.dark .option,
+body.dark .chip,
+body.dark .search-box,
+body.dark .task-input,
+body.dark .ask-input {
+    background: #151c2d;
+    color: #edf1ff;
+}
+
+body.dark .open-btn {
+    background: #202d4d;
+    color: #cbd7ff;
+}
+
+body.dark .progress-bar {
+    background: #293248;
+}
+
+body.dark .modal-close {
+    background: #293248;
+    color: white;
+}
+
+body.dark .chat-message.bot {
+    background: #202d4d;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 950px) {
+    .module-grid,
+    .subject-grid,
+    .notes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 50px 35px;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .assistant-grid,
+    .planner-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-links {
+        gap: 2px;
+    }
+
+    .nav-btn {
+        padding: 9px;
+    }
+}
+
+@media (max-width: 650px) {
+    .navbar {
+        padding: 0 12px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .nav-btn {
+        font-size: 11px;
+        padding: 8px 5px;
+    }
+
+    .theme-btn {
+        margin-left: 3px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .page {
+        padding: 25px 14px 50px;
+    }
+
+    .hero {
+        padding: 40px 25px;
+        border-radius: 18px;
+    }
+
+    .hero h1 {
+        font-size: 39px;
+    }
+
+    .module-grid,
+    .subject-grid,
+    .notes-grid,
+    .stats-grid,
+    .modal-top-grid,
+    .topic-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .ask-row,
+    .task-add {
+        flex-direction: column;
+    }
+
+    .question {
+        font-size: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =======================================================
+     HEADER
+     ======================================================= -->
+
+<header>
+    <nav class="navbar">
+
+        <div class="logo">
+            <span class="logo-icon">🎓</span>
+            <span>SmartHub 9</span>
+        </div>
+
+        <div class="nav-links">
+
+            <button class="nav-btn active" onclick="showPage('home', this)">
+                Home
+            </button>
+
+            <button class="nav-btn" onclick="showPage('subjects', this)">
+                Subjects
+            </button>
+
+            <button class="nav-btn" onclick="showPage('assistant', this)">
+                AI Assistant
+            </button>
+
+            <button class="nav-btn" onclick="showPage('quiz', this)">
+                Quiz
+            </button>
+
+            <button class="nav-btn" onclick="showPage('notes', this)">
+                Notes
+            </button>
+
+            <button class="nav-btn" onclick="showPage('planner', this)">
+                Planner
+            </button>
+
+            <button class="theme-btn" onclick="toggleTheme()" id="themeButton">
+                🌙
+            </button>
+
+        </div>
+
+    </nav>
+</header>
+
+
+<!-- =======================================================
+     HOME PAGE
+     ======================================================= -->
+
+<main id="home" class="page active">
+
+    <section class="hero">
+
+        <div>
+
+            <span class="hero-tag">
+                CLASS 9 • COMPUTER SCIENCE EXHIBITION
+            </span>
+
+            <h1>
+                Study smarter.<br>
+                Build your future.
+            </h1>
+
+            <p>
+                A student-built digital learning platform with quizzes,
+                notes, a Study Assistant, progress tracking and
+                productivity tools.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button
+                    class="hero-btn primary"
+                    onclick="showPage('subjects')">
+                    🚀 Explore Hub
+                </button>
+
+                <button
+                    class="hero-btn secondary"
+                    onclick="showPage('quiz')">
+                    🧠 Start Quiz
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-label">
+                YOUR DASHBOARD
+            </div>
+
+            <div class="dashboard-number" id="heroAccuracy">
+                0%
+            </div>
+
+            <div>
+                Current quiz accuracy
+            </div>
+
+            <div class="dashboard-grid">
+
+                <div class="dashboard-mini">
+                    <strong id="heroQuestions">0</strong>
+                    Questions
+                </div>
+
+                <div class="dashboard-mini">
+                    <strong id="heroPoints">0</strong>
+                    Points
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <h2 class="section-heading">
+        What can SmartHub do?
+    </h2>
+
+    <div class="module-grid">
+
+        <div class="module-card">
+            <div class="module-icon">🤖</div>
+            <h3>Study Assistant</h3>
+            <p>
+                Ask questions and get instant
+                rule-based Class 9 study help.
+            </p>
+        </div>
+
+        <div class="module-card">
+            <div class="module-icon">🧠</div>
+            <h3>130+ Quiz Questions</h3>
+            <p>
+                Practise Science, Mathematics,
+                Computer Science and Social Science.
+            </p>
+        </div>
+
+        <div class="module-card">
+            <div class="module-icon">📊</div>
+            <h3>Progress Tracking</h3>
+            <p>
+                Your score, attempts and accuracy
+                update automatically.
+            </p>
+        </div>
+
+        <div class="module-card">
+            <div class="module-icon">📝</div>
+            <h3>Notes & Search</h3>
+            <p>
+                Find quick revision material
+                without leaving the hub.
+            </p>
+        </div>
+
+        <div class="module-card">
+            <div class="module-icon">⏱️</div>
+            <h3>Study Timer</h3>
+            <p>
+                Use focused study sessions
+                with a simple timer.
+            </p>
+        </div>
+
+        <div class="module-card">
+            <div class="module-icon">💾</div>
+            <h3>Local Saving</h3>
+            <p>
+                Progress and tasks are saved
+                directly in your browser.
+            </p>
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =======================================================
+     SUBJECT PAGE
+     ======================================================= -->
+
+<section id="subjects" class="page">
+
+    <h1 class="page-title">
+        📚 Explore Subjects
+    </h1>
+
+    <p class="page-subtitle">
+        Click any subject to open its complete learning panel.
+    </p>
+
+    <div class="subject-grid">
+
+        <div class="subject-card">
+            <div class="subject-icon">🔬</div>
+            <h3>Science</h3>
+            <p>
+                Physics, Chemistry and Biology.
+            </p>
+            <button
+                class="open-btn"
+                onclick="openSubject('Science')">
+                Open Science →
+            </button>
+        </div>
+
+        <div class="subject-card">
+            <div class="subject-icon">📐</div>
+            <h3>Mathematics</h3>
+            <p>
+                Numbers, algebra, geometry
+                and statistics.
+            </p>
+            <button
+                class="open-btn"
+                onclick="openSubject('Mathematics')">
+                Open Maths →
+            </button>
+        </div>
+
+        <div class="subject-card">
+            <div class="subject-icon">💻</div>
+            <h3>Computer Science</h3>
+            <p>
+                Programming, web, algorithms
+                and computing.
+            </p>
+            <button
+                class="open-btn"
+                onclick="openSubject('Computer Science')">
+                Open Computer →
+            </button>
+        </div>
+
+        <div class="subject-card">
+            <div class="subject-icon">🌍</div>
+            <h3>Social Science</h3>
+            <p>
+                History, Geography, Civics
+                and Economics.
+            </p>
+            <button
+                class="open-btn"
+                onclick="openSubject('Social Science')">
+                Open Social Science →
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     AI ASSISTANT
+     ======================================================= -->
+
+<section id="assistant" class="page">
+
+    <h1 class="page-title">
+        🤖 Study Assistant
+    </h1>
+
+    <p class="page-subtitle">
+        Try questions about common Class 9 topics.
+    </p>
+
+    <div class="assistant-grid">
+
+        <div class="assistant-panel">
+
+            <div id="chatArea" class="chat-area">
+
+                <div class="chat-message bot">
+                    👋 Hi! I am SmartHub Assistant.
+                    Ask me about photosynthesis,
+                    mitochondria, force, motion,
+                    democracy, GDP, HTML, CSS,
+                    JavaScript, algorithms,
+                    mathematics and more.
+                </div>
+
+            </div>
+
+            <div class="chips">
+
+                <button class="chip"
+                    onclick="askChip('What is photosynthesis?')">
+                    Photosynthesis
+                </button>
+
+                <button class="chip"
+                    onclick="askChip('What is force?')">
+                    Force
+                </button>
+
+                <button class="chip"
+                    onclick="askChip('What is an algorithm?')">
+                    Algorithm
+                </button>
+
+                <button class="chip"
+                    onclick="askChip('What is democracy?')">
+                    Democracy
+                </button>
+
+                <button class="chip"
+                    onclick="askChip('What is HTML?')">
+                    HTML
+                </button>
+
+            </div>
+
+            <div class="ask-row">
+
+                <input
+                    id="assistantInput"
+                    class="ask-input"
+                    placeholder="Type your question here..."
+                    onkeydown="if(event.key==='Enter') askAssistant()">
+
+                <button
+                    class="primary-btn"
+                    onclick="askAssistant()">
+                    Ask
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="how-panel">
+
+            <h3>💡 How it works</h3>
+
+            <p>
+                This exhibition version uses JavaScript
+                keyword matching. You can explain the
+                logic to your teacher instead of claiming
+                that it is a full online AI model.
+            </p>
+
+            <h3>Example questions</h3>
+
+            <ul class="example-list">
+                <li>What is photosynthesis?</li>
+                <li>Explain mitochondria.</li>
+                <li>What is an algorithm?</li>
+                <li>What is democracy?</li>
+                <li>What is acceleration?</li>
+                <li>What is HTML?</li>
+                <li>What is CSS?</li>
+                <li>What is GDP?</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     QUIZ PAGE
+     ======================================================= -->
+
+<section id="quiz" class="page">
+
+    <h1 class="page-title">
+        🧠 Quiz Arena
+    </h1>
+
+    <p class="page-subtitle">
+        <span id="quizTotalText">130</span>
+        questions • Instant feedback
+    </p>
+
+    <div id="quizContainer" class="quiz-box">
+
+        <div class="quiz-top">
+
+            <div class="quiz-question-number"
+                 id="quizQuestionNumber">
+                Question 1 / 130
+            </div>
+
+            <div class="quiz-score">
+                Score: <span id="quizScore">0</span>
+            </div>
+
+        </div>
+
+        <div class="progress-bar">
+            <div
+                class="progress-fill"
+                id="quizProgress">
+            </div>
+        </div>
+
+        <div id="questionText" class="question">
+            Loading question...
+        </div>
+
+        <div id="optionsContainer"></div>
+
+        <div class="quiz-bottom">
+
+            <button
+                id="nextQuestionButton"
+                class="next-btn"
+                onclick="nextQuestion()"
+                disabled>
+                Next Question →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     NOTES PAGE
+     ======================================================= -->
+
+<section id="notes" class="page">
+
+    <h1 class="page-title">
+        📝 Quick Notes
+    </h1>
+
+    <p class="page-subtitle">
+        Search the built-in revision library.
+    </p>
+
+    <input
+        id="noteSearch"
+        class="search-box"
+        placeholder="Search notes: force, cell, HTML, democracy..."
+        oninput="filterNotes()">
+
+    <div id="notesGrid" class="notes-grid"></div>
+
+</section>
+
+
+<!-- =======================================================
+     PLANNER PAGE
+     ======================================================= -->
+
+<section id="planner" class="page">
+
+    <h1 class="page-title">
+        🗓️ Study Planner
+    </h1>
+
+    <p class="page-subtitle">
+        Add tasks and save them locally.
+    </p>
+
+    <div class="planner-grid">
+
+        <div class="panel">
+
+            <div class="task-add">
+
+                <input
+                    id="taskInput"
+                    class="task-input"
+                    placeholder="Example: Revise Motion chapter"
+                    onkeydown="if(event.key==='Enter') addTask()">
+
+                <button
+                    class="primary-btn"
+                    onclick="addTask()">
+                    Add
+                </button>
+
+            </div>
+
+            <div id="taskList"></div>
+
+        </div>
+
+
+        <div class="panel timer">
+
+            <h3>⏱️ Focus Timer</h3>
+
+            <div
+                class="timer-display"
+                id="timerDisplay">
+                25:00
+            </div>
+
+            <div class="timer-buttons">
+
+                <button
+                    class="secondary-btn"
+                    onclick="startTimer()">
+                    Start
+                </button>
+
+                <button
+                    class="secondary-btn"
+                    onclick="pauseTimer()">
+                    Pause
+                </button>
+
+                <button
+                    class="secondary-btn"
+                    onclick="resetTimer()">
+                    Reset
+                </button>
+
+            </div>
+
+            <p>
+                A simple 25-minute study session.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     PROGRESS PAGE
+     ======================================================= -->
+
+<section id="progress" class="page">
+
+    <h1 class="page-title">
+        📊 My Progress
+    </h1>
+
+    <p class="page-subtitle">
+        Live statistics from this browser session.
+    </p>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <h3>Questions Answered</h3>
+            <div class="stat-number" id="statAnswered">
+                0
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <h3>Correct Answers</h3>
+            <div class="stat-number" id="statCorrect">
+                0
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <h3>Accuracy</h3>
+            <div class="stat-number" id="statAccuracy">
+                0%
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <h3>Tasks Completed</h3>
+            <div class="stat-number" id="statTasks">
+                0
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     SUBJECT MODAL
+     ======================================================= -->
+
+<div id="subjectModal" class="modal">
+
+    <div class="modal-box">
+
+        <button
+            class="modal-close"
+            onclick="closeSubject()">
+            ✕
+        </button>
+
+        <div class="modal-header">
+
+            <h2 id="modalSubjectTitle">
+                Science
+            </h2>
+
+            <p id="modalSubjectDescription">
+                Physics, Chemistry and Biology revision resources.
+            </p>
+
+        </div>
+
+
+        <div class="modal-top-grid">
+
+            <div class="modal-feature">
+
+                <h3>🧠 Quiz Bank</h3>
+
+                <p>
+                    <span id="modalQuizCount">48</span>
+                    questions available for this subject.
+                </p>
+
+                <button
+                    class="primary-btn"
+                    onclick="startSubjectQuiz()">
+                    Start Subject Quiz
+                </button>
+
+            </div>
+
+
+            <div class="modal-feature">
+
+                <h3>📚 Quick Revision</h3>
+
+                <p>
+                    Quick notes are available below.
+                </p>
+
+                <button
+                    class="secondary-btn"
+                    onclick="openSubjectNotes()">
+                    Open Notes
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <h3>Topics in this section</h3>
+
+        <div
+            id="modalTopics"
+            class="topic-grid">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =======================================================
+     FOOTER
+     ======================================================= -->
+
+<footer>
+
+    <div class="footer-inner">
+
+        <div>
+            <h3>🎓 Student Smart Hub</h3>
+
+            <p>
+                A Class 9 Computer Science exhibition
+                project combining HTML, CSS and
+                JavaScript into one interactive
+                learning platform.
+            </p>
+        </div>
+
+        <div>
+
+            <h3>Modules</h3>
+
+            <ul>
+                <li>Subjects</li>
+                <li>Assistant</li>
+                <li>Quiz Arena</li>
+                <li>Notes</li>
+                <li>Planner</li>
+            </ul>
+
+        </div>
+
+        <div>
+
+            <h3>Team</h3>
+
+            <p>
+                Designed and developed by our
+                Class 9 team.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   SMART HUB 9 — JAVASCRIPT
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE NAVIGATION
+   ========================================================= */
+
+function showPage(pageId, clickedButton) {
+
+    document.querySelectorAll(".page").forEach(function(page) {
+        page.classList.remove("active");
+    });
+
+    const target = document.getElementById(pageId);
+
+    if (target) {
+        target.classList.add("active");
+    }
+
+    document.querySelectorAll(".nav-btn").forEach(function(button) {
+        button.classList.remove("active");
+    });
+
+    if (clickedButton) {
+        clickedButton.classList.add("active");
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    updateProgressDisplay();
+}
+
+
+/* =========================================================
+   THEME
+   ========================================================= */
+
+function toggleTheme() {
+
+    document.body.classList.toggle("dark");
+
+    const dark =
+        document.body.classList.contains("dark");
+
+    localStorage.setItem("smarthubDark", dark);
+
+    document.getElementById("themeButton").textContent =
+        dark ? "☀️" : "🌙";
+}
+
+if (localStorage.getItem("smarthubDark") === "true") {
+    document.body.classList.add("dark");
+
+    window.addEventListener("DOMContentLoaded", function() {
+        const button = document.getElementById("themeButton");
+
+        if (button) {
+            button.textContent = "☀️";
+        }
+    });
+}
+
+
+/* =========================================================
+   SUBJECT DATA
+   ========================================================= */
+
+const subjectData = {
+
+    "Science": {
+
+        description:
+            "Physics, Chemistry and Biology revision resources.",
+
+        quizCount: 48,
+
+        topics: [
+            ["Motion",
+             "Motion is the change in position of an object with time."],
+
+            ["Force",
+             "Force is a push or pull that can change the state of motion of an object."],
+
+            ["Cell",
+             "The cell is the basic structural and functional unit of life."],
+
+            ["Photosynthesis",
+             "Green plants use light energy to make food from carbon dioxide and water."],
+
+            ["Matter",
+             "Matter is anything that has mass and occupies space."],
+
+            ["Atoms and Molecules",
+             "Atoms are the basic units of elements and molecules are combinations of atoms."]
+        ]
+
+    },
+
+
+    "Mathematics": {
+
+        description:
+            "Numbers, algebra, geometry and statistics revision resources.",
+
+        quizCount: 30,
+
+        topics: [
+            ["Number Systems",
+             "Real numbers include rational and irrational numbers."],
+
+            ["Polynomials",
+             "A polynomial is an algebraic expression made from variables and coefficients."],
+
+            ["Coordinate Geometry",
+             "Coordinates are used to locate points on a Cartesian plane."],
+
+            ["Linear Equations",
+             "A linear equation in two variables represents a straight line."],
+
+            ["Triangles",
+             "A triangle is a polygon with three sides and the sum of its interior angles is 180°."],
+
+            ["Statistics",
+             "Statistics involves collecting, organising, presenting and interpreting data."]
+        ]
+
+    },
+
+
+    "Computer Science": {
+
+        description:
+            "Programming, web development, algorithms and computing.",
+
+        quizCount: 25,
+
+        topics: [
+            ["HTML",
+             "HTML is the standard markup language used to structure web pages."],
+
+            ["CSS",
+             "CSS controls the presentation and appearance of HTML elements."],
+
+            ["JavaScript",
+             "JavaScript adds logic and interactivity to web pages."],
+
+            ["Algorithms",
+             "An algorithm is a finite sequence of clear steps used to solve a problem."],
+
+            ["Variables",
+             "A variable is a named storage location used to hold data."],
+
+            ["Programming Logic",
+             "Programming logic uses conditions, loops and functions to solve problems."]
+        ]
+
+    },
+
+
+    "Social Science": {
+
+        description:
+            "History, Geography, Civics and Economics revision resources.",
+
+        quizCount: 27,
+
+        topics: [
+            ["Democracy",
+             "Democracy is a form of government in which people choose their representatives."],
+
+            ["Constitution",
+             "A constitution contains fundamental rules and principles for governing a country."],
+
+            ["India: Size and Location",
+             "India is located in the Northern and Eastern hemispheres."],
+
+            ["Economy",
+             "An economy consists of activities related to production, distribution and consumption."],
+
+            ["GDP",
+             "GDP is the total monetary value of final goods and services produced within an economy."],
+
+            ["People as Resource",
+             "Education and health improve the quality and productivity of human resources."]
+        ]
+
+    }
+
+};
+
+
+/* =========================================================
+   SUBJECT MODAL
+   ========================================================= */
+
+let selectedSubject = "Science";
+
+function openSubject(subject) {
+
+    selectedSubject = subject;
+
+    const data = subjectData[subject];
+
+    document.getElementById("modalSubjectTitle").textContent =
+        subject;
+
+    document.getElementById("modalSubjectDescription").textContent =
+        data.description;
+
+    document.getElementById("modalQuizCount").textContent =
+        data.quizCount;
+
+    const topics =
+        document.getElementById("modalTopics");
+
+    topics.innerHTML = "";
+
+    data.topics.forEach(function(topic) {
+
+        const div = document.createElement("div");
+
+        div.className = "topic";
+
+        div.innerHTML = `
+            <h4>${topic[0]}</h4>
+            <p>${topic[1]}</p>
+        `;
+
+        topics.appendChild(div);
+
+    });
+
+    document.getElementById("subjectModal")
+        .classList.add("show");
+}
+
+
+function closeSubject() {
+
+    document.getElementById("subjectModal")
+        .classList.remove("show");
+}
+
+
+document.getElementById("subjectModal")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+            closeSubject();
+        }
+
+    });
+
+
+function startSubjectQuiz() {
+
+    closeSubject();
+
+    showPage("quiz");
+
+    quizQuestions =
+        allQuestions.filter(function(question) {
+
+            return question.subject === selectedSubject;
+
+        });
+
+    if (quizQuestions.length === 0) {
+        quizQuestions = allQuestions;
+    }
+
+    currentQuestion = 0;
+    quizScore = 0;
+    quizAnswered = false;
+
+    renderQuestion();
+}
+
+
+function openSubjectNotes() {
+
+    closeSubject();
+
+    showPage("notes");
+
+    document.getElementById("noteSearch").value =
+        selectedSubject;
+
+    filterNotes();
+}
+
+
+/* =========================================================
+   NOTES DATA
+   ========================================================= */
+
+const notes = [
+
+    {
+        subject: "Science",
+        title: "Motion",
+        text: "Motion is the change in position of an object with time. Speed is distance divided by time."
+    },
+
+    {
+        subject: "Science",
+        title: "Force",
+        text: "Force is a push or pull. The SI unit of force is newton. Force can change motion."
+    },
+
+    {
+        subject: "Science",
+        title: "Cell",
+        text: "The cell is the basic structural and functional unit of life. Major organelles include nucleus, mitochondria and cytoplasm."
+    },
+
+    {
+        subject: "Science",
+        title: "Photosynthesis",
+        text: "Green plants use sunlight, carbon dioxide and water to produce glucose and oxygen."
+    },
+
+    {
+        subject: "Science",
+        title: "Matter",
+        text: "Matter has mass and occupies space. It commonly exists as solid, liquid and gas."
+    },
+
+    {
+        subject: "Mathematics",
+        title: "Polynomials",
+        text: "A polynomial is an algebraic expression containing variables and coefficients with non-negative integer powers."
+    },
+
+    {
+        subject: "Mathematics",
+        title: "Statistics",
+        text: "Statistics involves collecting, organising, presenting and interpreting data."
+    },
+
+    {
+        subject: "Mathematics",
+        title: "Triangles",
+        text: "A triangle has three sides. The sum of its interior angles is 180 degrees."
+    },
+
+    {
+        subject: "Mathematics",
+        title: "Number Systems",
+        text: "Real numbers include rational and irrational numbers."
+    },
+
+    {
+        subject: "Computer Science",
+        title: "HTML",
+        text: "HTML provides the structure of a webpage using elements and tags."
+    },
+
+    {
+        subject: "Computer Science",
+        title: "CSS",
+        text: "CSS is used to control colours, spacing, layouts, fonts and other visual properties."
+    },
+
+    {
+        subject: "Computer Science",
+        title: "JavaScript",
+        text: "JavaScript is a programming language that can make websites interactive."
+    },
+
+    {
+        subject: "Computer Science",
+        title: "Algorithms",
+        text: "An algorithm is a finite sequence of clear steps designed to solve a problem."
+    },
+
+    {
+        subject: "Social Science",
+        title: "Democracy",
+        text: "Democracy is government by elected representatives chosen by citizens."
+    },
+
+    {
+        subject: "Social Science",
+        title: "Economy",
+        text: "An economy includes production, distribution and consumption of goods and services."
+    },
+
+    {
+        subject: "Social Science",
+        title: "GDP",
+        text: "GDP measures the monetary value of final goods and services produced within an economy."
+    },
+
+    {
+        subject: "Social Science",
+        title: "India: Size and Location",
+        text: "India lies in the Northern and Eastern hemispheres and has a large geographical extent."
+    }
+
+];
+
+
+function renderNotes(noteArray) {
+
+    const grid =
+        document.getElementById("notesGrid");
+
+    grid.innerHTML = "";
+
+    if (noteArray.length === 0) {
+
+        grid.innerHTML = `
+            <div class="note-card">
+                <h3>No notes found</h3>
+                <p>
+                    Try another keyword such as force,
+                    motion, HTML or democracy.
+                </p>
+            </div>
+        `;
+
+        return;
+    }
+
+    noteArray.forEach(function(note) {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "note-card";
+
+        card.innerHTML = `
+            <div class="note-subject">
+                ${note.subject}
+            </div>
+
+            <h3>${note.title}</h3>
+
+            <p>${note.text}</p>
+        `;
+
+        grid.appendChild(card);
+
+    });
+}
+
+
+function filterNotes() {
+
+    const query =
+        document.getElementById("noteSearch")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const filtered =
+        notes.filter(function(note) {
+
+            return (
+                note.subject.toLowerCase().includes(query) ||
+                note.title.toLowerCase().includes(query) ||
+                note.text.toLowerCase().includes(query)
+            );
+
+        });
+
+    renderNotes(filtered);
+}
+
+
+/* =========================================================
+   AI STUDY ASSISTANT
+   ========================================================= */
+
+const assistantAnswers = {
+
+    photosynthesis:
+        "<strong>Photosynthesis:</strong> It is the process by which green plants prepare food using sunlight, carbon dioxide and water. Oxygen is released as a by-product.",
+
+    mitochondria:
+        "<strong>Mitochondria:</strong> They are cell organelles responsible for releasing energy from food during cellular respiration. They are often called the powerhouse of the cell.",
+
+    force:
+        "<strong>Force:</strong> A force is a push or pull that can change the state of motion, direction or shape of an object. Its SI unit is newton.",
+
+    motion:
+        "<strong>Motion:</strong> Motion is the change in position of an object with respect to time.",
+
+    acceleration:
+        "<strong>Acceleration:</strong> Acceleration is the rate of change of velocity with time. SI unit: m/s².",
+
+    algorithm:
+        "<strong>Algorithm:</strong> An algorithm is a finite sequence of clear and ordered steps used to solve a problem.",
+
+    democracy:
+        "<strong>Democracy:</strong> Democracy is a system of government in which people elect representatives to govern them.",
+
+    html:
+        "<strong>HTML:</strong> HTML stands for HyperText Markup Language. It provides the structure of webpages.",
+
+    css:
+        "<strong>CSS:</strong> CSS stands for Cascading Style Sheets. It controls the visual appearance and layout of webpages.",
+
+    javascript:
+        "<strong>JavaScript:</strong> JavaScript is a programming language commonly used to add interactivity and logic to websites.",
+
+    gdp:
+        "<strong>GDP:</strong> Gross Domestic Product is the monetary value of final goods and services produced within a country's borders during a given period.",
+
+    cell:
+        "<strong>Cell:</strong> The cell is the basic structural and functional unit of life.",
+
+    polynomial:
+        "<strong>Polynomial:</strong> A polynomial is an algebraic expression made from variables and coefficients with non-negative integer powers.",
+
+    triangle:
+        "<strong>Triangle:</strong> A triangle is a polygon with three sides. The sum of its interior angles is 180°.",
+
+    economy:
+        "<strong>Economy:</strong> An economy is a system involving production, distribution and consumption of goods and services."
+};
+
+
+function askChip(question) {
+
+    document.getElementById("assistantInput").value =
+        question;
+
+    askAssistant();
+}
+
+
+function askAssistant() {
+
+    const input =
+        document.getElementById("assistantInput");
+
+    const question =
+        input.value.trim();
+
+    if (!question) return;
+
+    addChatMessage(question, "user");
+
+    input.value = "";
+
+    setTimeout(function() {
+
+        const answer =
+            getAssistantAnswer(question);
+
+        addChatMessage(answer, "bot");
+
+    }, 250);
+}
+
+
+function addChatMessage(text, type) {
+
+    const chat =
+        document.getElementById("chatArea");
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "chat-message " + type;
+
+    message.innerHTML = text;
+
+    chat.appendChild(message);
+
+    chat.scrollTop = chat.scrollHeight;
+}
+
+
+function getAssistantAnswer(question) {
+
+    const q =
+        question.toLowerCase();
+
+    const keywords = Object.keys(assistantAnswers);
+
+    for (let i = 0; i < keywords.length; i++) {
+
+        if (q.includes(keywords[i])) {
+            return assistantAnswers[keywords[i]];
+        }
+
+    }
+
+    if (
+        q.includes("who") ||
+        q.includes("what") ||
+        q.includes("explain")
+    ) {
+
+        return `
+            I can help with Class 9 topics.
+            Try asking about <strong>motion,
+            force, cells, photosynthesis,
+            democracy, GDP, HTML, CSS,
+            JavaScript, algorithms,
+            polynomials</strong> or
+            <strong>triangles</strong>.
+        `;
+
+    }
+
+    return `
+        I don't have that topic in my built-in
+        exhibition knowledge yet. Try a Class 9
+        question about Science, Mathematics,
+        Computer Science or Social Science.
+    `;
+}
+
+
+/* =========================================================
+   QUIZ DATABASE
+   ========================================================= */
+
+const allQuestions = [
+
+/* ---------------- SCIENCE ---------------- */
+
+{
+    subject:"Science",
+    q:"What is the SI unit of force?",
+    options:["Joule","Newton","Watt","Pascal"],
+    answer:1
+},
+
+{
+    subject:"Science",
+    q:"Which organelle is known as the powerhouse of the cell?",
+    options:["Nucleus","Ribosome","Mitochondria","Golgi apparatus"],
+    answer:2
+},
+
+{
+    subject:"Science",
+    q:"What is the SI unit of speed?",
+    options:["m/s","km","newton","m/s²"],
+    answer:0
+},
+
+{
+    subject:"Science",
+    q:"What is acceleration?",
+    options:[
+        "Distance travelled",
+        "Rate of change of velocity",
+        "Mass divided by volume",
+        "Force multiplied by distance"
+    ],
+    answer:1
+},
+
+{
+    subject:"Science",
+    q:"Which gas is used by green plants during photosynthesis?",
+    options:["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"],
+    answer:2
+},
+
+{
+    subject:"Science",
+    q:"The basic structural and functional unit of life is:",
+    options:["Tissue","Organ","Cell","Organ system"],
+    answer:2
+},
+
+{
+    subject:"Science",
+    q:"Which instrument measures temperature?",
+    options:["Barometer","Thermometer","Ammeter","Speedometer"],
+    answer:1
+},
+
+{
+    subject:"Science",
+    q:"What is the approximate value of acceleration due to gravity on Earth?",
+    options:["4.8 m/s²","9.8 m/s²","20 m/s²","1.6 m/s²"],
+    answer:1
+},
+
+{
+    subject:"Science",
+    q:"Which state of matter has a fixed shape and fixed volume?",
+    options:["Solid","Liquid","Gas","Plasma"],
+    answer:0
+},
+
+{
+    subject:"Science",
+    q:"What is the smallest unit of an element that retains its chemical properties?",
+    options:["Cell","Atom","Tissue","Crystal"],
+    answer:1
+},
+
+{
+    subject:"Science",
+    q:"Which part of the cell controls most cellular activities?",
+    options:["Cell wall","Nucleus","Vacuole","Cytoplasm"],
+    answer:1
+},
+
+{
+    subject:"Science",
+    q:"What is the formula for speed?",
+    options:[
+        "Time / Distance",
+        "Distance / Time",
+        "Distance × Time",
+        "Mass / Volume"
+    ],
+    answer:1
+},
+
+{
+    subject:"Science",
+    q:"Which substance is produced during photosynthesis?",
+    options:["Glucose","Nitrogen","Salt","Protein only"],
+    answer:0
+},
+
+{
+    subject:"Science",
+    q:"What is the SI unit of work?",
+    options:["Newton","Joule","Pascal","Watt"],
+    answer:1
+},
+
+{
+    subject:"Science",
+    q:"Density is equal to:",
+    options:[
+        "Mass × Volume",
+        "Mass / Volume",
+        "Volume / Mass",
+        "Mass + Volume"
+    ],
+    answer:1
+},
+
+{
+    subject:"Science",
+    q:"Which tissue transports water in plants?",
+    options:["Phloem","Xylem","Parenchyma","Collenchyma"],
+    answer:1
+},
+
+{
+    subject:"Science",
+    q:"Which tissue transports food in plants?",
+    options:["Xylem","Phloem","Sclerenchyma","Meristem"],
+    answer:1
+},
+
+{
+    subject:"Science",
+    q:"What is inertia?",
+    options:[
+        "Ability to change shape",
+        "Resistance to change in state of motion",
+        "Ability to produce light",
+        "Force of gravity"
+    ],
+    answer:1
+},
+
+{
+    subject:"Science",
+    q:"Which law states that every action has an equal and opposite reaction?",
+    options:[
+        "Newton's First Law",
+        "Newton's Second Law",
+        "Newton's Third Law",
+        "Law of Gravitation"
+    ],
+    answer:2
+},
+
+{
+    subject:"Science",
+    q:"What is the SI unit of pressure?",
+    options:["Pascal","Newton","Joule","Watt"],
+    answer:0
+},
+
+{
+    subject:"Science",
+    q:"Which component gives a plant cell additional rigidity?",
+    options:["Cell membrane","Cell wall","Nucleus","Ribosome"],
+    answer:1
+},
+
+{
+    subject:"Science",
+    q:"Which process changes liquid into gas?",
+    options:["Condensation","Evaporation","Freezing","Melting"],
+    answer:1
+},
+
+{
+    subject:"Science",
+    q:"Which process changes gas into liquid?",
+    options:["Condensation","Sublimation","Melting","Freezing"],
+    answer:0
+},
+
+{
+    subject:"Science",
+    q:"Which of these is a scalar quantity?",
+    options:["Velocity","Displacement","Speed","Force"],
+    answer:2
+},
+
+{
+    subject:"Science",
+    q:"Which of these is a vector quantity?",
+    options:["Speed","Distance","Mass","Velocity"],
+    answer:3
+},
+
+{
+    subject:"Science",
+    q:"What is the chemical formula of water?",
+    options:["CO₂","H₂O","O₂","NaCl"],
+    answer:1
+},
+
+{
+    subject:"Science",
+    q:"Which gas is essential for respiration?",
+    options:["Oxygen","Carbon dioxide","Hydrogen","Helium"],
+    answer:0
+},
+
+{
+    subject:"Science",
+    q:"What is the function of chlorophyll?",
+    options:[
+        "Absorb light energy",
+        "Transport water",
+        "Store DNA",
+        "Produce minerals"
+    ],
+    answer:0
+},
+
+{
+    subject:"Science",
+    q:"Which organelle contains genetic material?",
+    options:["Nucleus","Vacuole","Cell wall","Golgi body"],
+    answer:0
+},
+
+{
+    subject:"Science",
+    q:"Which particle has a negative charge?",
+    options:["Proton","Neutron","Electron","Nucleus"],
+    answer:2
+},
+
+{
+    subject:"Science",
+    q:"Which particle has no electrical charge?",
+    options:["Electron","Proton","Neutron","Ion"],
+    answer:2
+},
+
+{
+    subject:"Science",
+    q:"Which particle has a positive charge?",
+    options:["Electron","Proton","Neutron","Photon"],
+    answer:1
+},
+
+{
+    subject:"Science",
+    q:"What is the approximate speed of light in vacuum?",
+    options:[
+        "3 × 10⁸ m/s",
+        "3 × 10⁶ m/s",
+        "3 × 10⁴ m/s",
+        "3 × 10² m/s"
+    ],
+    answer:0
+},
+
+{
+    subject:"Science",
+    q:"A body at rest tends to remain at rest due to:",
+    options:["Gravity","Inertia","Pressure","Friction only"],
+    answer:1
+},
+
+/* ---------------- MATHEMATICS ---------------- */
+
+{
+    subject:"Mathematics",
+    q:"What is the value of √144?",
+    options:["10","11","12","14"],
+    answer:2
+},
+
+{
+    subject:"Mathematics",
+    q:"What is the degree of 5x³ + 2x + 1?",
+    options:["1","2","3","5"],
+    answer:2
+},
+
+{
+    subject:"Mathematics",
+    q:"The sum of angles of a triangle is:",
+    options:["90°","180°","270°","360°"],
+    answer:1
+},
+
+{
+    subject:"Mathematics",
+    q:"Which number is irrational?",
+    options:["2","3/4","√2","0.5"],
+    answer:2
+},
+
+{
+    subject:"Mathematics",
+    q:"What is the value of 2³?",
+    options:["6","8","9","12"],
+    answer:1
+},
+
+{
+    subject:"Mathematics",
+    q:"The coordinates of the origin are:",
+    options:["(1,1)","(0,1)","(1,0)","(0,0)"],
+    answer:3
+},
+
+{
+    subject:"Mathematics",
+    q:"A polynomial with degree 2 is called:",
+    options:["Linear","Quadratic","Cubic","Constant"],
+    answer:1
+},
+
+{
+    subject:"Mathematics",
+    q:"What is the probability of getting a head when a fair coin is tossed?",
+    options:["0","1/4","1/2","1"],
+    answer:2
+},
+
+{
+    subject:"Mathematics",
+    q:"What is 15% of 200?",
+    options:["15","20","30","40"],
+    answer:2
+},
+
+{
+    subject:"Mathematics",
+    q:"If x + 5 = 12, x is:",
+    options:["5","6","7","8"],
+    answer:2
+},
+
+{
+    subject:"Mathematics",
+    q:"The graph of a linear equation in two variables is generally a:",
+    options:["Circle","Straight line","Triangle","Parabola"],
+    answer:1
+},
+
+{
+    subject:"Mathematics",
+    q:"What is the square of 15?",
+    options:["125","200","225","250"],
+    answer:2
+},
+
+{
+    subject:"Mathematics",
+    q:"What is the cube of 4?",
+    options:["12","16","32","64"],
+    answer:3
+},
+
+{
+    subject:"Mathematics",
+    q:"A rational number can be written in the form:",
+    options:["p/q where q ≠ 0","p/0","√p only","π only"],
+    answer:0
+},
+
+{
+    subject:"Mathematics",
+    q:"The median of 2, 4, 6, 8, 10 is:",
+    options:["4","5","6","8"],
+    answer:2
+},
+
+{
+    subject:"Mathematics",
+    q:"The mean of 2, 4 and 6 is:",
+    options:["3","4","5","6"],
+    answer:1
+},
+
+{
+    subject:"Mathematics",
+    q:"How many sides does a quadrilateral have?",
+    options:["3","4","5","6"],
+    answer:1
+},
+
+{
+    subject:"Mathematics",
+    q:"What is the perimeter of a square of side 5 cm?",
+    options:["10 cm","15 cm","20 cm","25 cm"],
+    answer:2
+},
+
+{
+    subject:"Mathematics",
+    q:"What is the area of a rectangle with length 8 cm and breadth 5 cm?",
+    options:["13 cm²","26 cm²","40 cm²","80 cm²"],
+    answer:2
+},
+
+{
+    subject:"Mathematics",
+    q:"The value of π is approximately:",
+    options:["2.14","3.14","4.14","5.14"],
+    answer:1
+},
+
+{
+    subject:"Mathematics",
+    q:"An angle of 90° is called:",
+    options:["Acute","Obtuse","Right","Straight"],
+    answer:2
+},
+
+{
+    subject:"Mathematics",
+    q:"An angle greater than 90° but less than 180° is:",
+    options:["Acute","Right","Obtuse","Reflex"],
+    answer:2
+},
+
+{
+    subject:"Mathematics",
+    q:"What is 2x + 3x?",
+    options:["5","5x","6x","x⁵"],
+    answer:1
+},
+
+{
+    subject:"Mathematics",
+    q:"The additive identity is:",
+    options:["0","1","-1","10"],
+    answer:0
+},
+
+{
+    subject:"Mathematics",
+    q:"The multiplicative identity is:",
+    options:["0","1","-1","10"],
+    answer:1
+},
+
+{
+    subject:"Mathematics",
+    q:"What is the HCF of 12 and 18?",
+    options:["2","3","6","9"],
+    answer:2
+},
+
+{
+    subject:"Mathematics",
+    q:"What is the LCM of 4 and 6?",
+    options:["8","10","12","24"],
+    answer:2
+},
+
+{
+    subject:"Mathematics",
+    q:"A polynomial with one term is called:",
+    options:["Monomial","Binomial","Trinomial","Quadratic"],
+    answer:0
+},
+
+{
+    subject:"Mathematics",
+    q:"A polynomial with two terms is called:",
+    options:["Monomial","Binomial","Trinomial","Constant"],
+    answer:1
+},
+
+/* ---------------- COMPUTER SCIENCE ---------------- */
+
+{
+    subject:"Computer Science",
+    q:"What does HTML stand for?",
+    options:[
+        "HyperText Markup Language",
+        "HighText Machine Language",
+        "Hyper Transfer Main Language",
+        "Home Tool Markup Language"
+    ],
+    answer:0
+},
+
+{
+    subject:"Computer Science",
+    q:"What is CSS mainly used for?",
+    options:[
+        "Database storage",
+        "Styling webpages",
+        "Creating hardware",
+        "Sending emails"
+    ],
+    answer:1
+},
+
+{
+    subject:"Computer Science",
+    q:"Which language is commonly used to add interactivity to webpages?",
+    options:["HTML","CSS","JavaScript","SQL only"],
+    answer:2
+},
+
+{
+    subject:"Computer Science",
+    q:"What is an algorithm?",
+    options:[
+        "A computer virus",
+        "A sequence of steps to solve a problem",
+        "A hardware device",
+        "A programming error"
+    ],
+    answer:1
+},
+
+{
+    subject:"Computer Science",
+    q:"Which HTML tag creates a paragraph?",
+    options:["<p>","<h1>","<br>","<img>"],
+    answer:0
+},
+
+{
+    subject:"Computer Science",
+    q:"Which HTML tag creates the largest standard heading?",
+    options:["<h6>","<head>","<h1>","<title>"],
+    answer:2
+},
+
+{
+    subject:"Computer Science",
+    q:"Which CSS property changes text colour?",
+    options:["font-size","color","background","text-style"],
+    answer:1
+},
+
+{
+    subject:"Computer Science",
+    q:"Which symbol is used for a JavaScript single-line comment?",
+    options:["//","##","<!--","**"],
+    answer:0
+},
+
+{
+    subject:"Computer Science",
+    q:"A variable is used to:",
+    options:[
+        "Store data",
+        "Clean the screen",
+        "Print paper",
+        "Connect electricity"
+    ],
+    answer:0
+},
+
+{
+    subject:"Computer Science",
+    q:"Which keyword declares a block-scoped variable in JavaScript?",
+    options:["let","define","variable","make"],
+    answer:0
+},
+
+{
+    subject:"Computer Science",
+    q:"Which JavaScript structure repeats code while a condition is true?",
+    options:["if","while","switch","return"],
+    answer:1
+},
+
+{
+    subject:"Computer Science",
+    q:"Which symbol is commonly used for strict equality in JavaScript?",
+    options:["=","==","===","!="],
+    answer:2
+},
+
+{
+    subject:"Computer Science",
+    q:"What does CPU stand for?",
+    options:[
+        "Central Processing Unit",
+        "Computer Primary Unit",
+        "Central Program Utility",
+        "Control Processing User"
+    ],
+    answer:0
+},
+
+{
+    subject:"Computer Science",
+    q:"Which is an example of an input device?",
+    options:["Monitor","Printer","Keyboard","Speaker"],
+    answer:2
+},
+
+{
+    subject:"Computer Science",
+    q:"Which is an example of an output device?",
+    options:["Keyboard","Mouse","Scanner","Monitor"],
+    answer:3
+},
+
+{
+    subject:"Computer Science",
+    q:"Binary numbers use which two digits?",
+    options:["1 and 2","0 and 1","2 and 3","5 and 6"],
+    answer:1
+},
+
+{
+    subject:"Computer Science",
+    q:"What does RAM stand for?",
+    options:[
+        "Random Access Memory",
+        "Read Access Machine",
+        "Rapid Application Memory",
+        "Random Application Module"
+    ],
+    answer:0
+},
+
+{
+    subject:"Computer Science",
+    q:"Which data type represents true or false?",
+    options:["String","Boolean","Integer","Float"],
+    answer:1
+},
+
+{
+    subject:"Computer Science",
+    q:"A function is mainly used to:",
+    options:[
+        "Group reusable instructions",
+        "Turn off the computer",
+        "Increase screen size",
+        "Store electricity"
+    ],
+    answer:0
+},
+
+{
+    subject:"Computer Science",
+    q:"Which HTML element is used to create a link?",
+    options:["<a>","<linktext>","<url>","<href>"],
+    answer:0
+},
+
+{
+    subject:"Computer Science",
+    q:"Which CSS property controls space inside an element?",
+    options:["margin","padding","border","gap-only"],
+    answer:1
+},
+
+{
+    subject:"Computer Science",
+    q:"Which CSS layout system is useful for arranging items in one dimension?",
+    options:["Flexbox","SQL","Python","Binary"],
+    answer:0
+},
+
+{
+    subject:"Computer Science",
+    q:"Which statement is used for decision making in JavaScript?",
+    options:["if","repeat","loop","print"],
+    answer:0
+},
+
+{
+    subject:"Computer Science",
+    q:"What does URL stand for?",
+    options:[
+        "Uniform Resource Locator",
+        "Universal Reading Link",
+        "User Resource Language",
+        "Uniform Routing Line"
+    ],
+    answer:0
+},
+
+{
+    subject:"Computer Science",
+    q:"Which of these is a programming language?",
+    options:["HTML","CSS","JavaScript","JPEG"],
+    answer:2
+},
+
+/* ---------------- SOCIAL SCIENCE ---------------- */
+
+{
+    subject:"Social Science",
+    q:"What is democracy?",
+    options:[
+        "Rule by one person only",
+        "Government by elected representatives",
+        "Rule by the army",
+        "Rule without elections"
+    ],
+    answer:1
+},
+
+{
+    subject:"Social Science",
+    q:"What does GDP stand for?",
+    options:[
+        "Gross Domestic Product",
+        "General Development Plan",
+        "Gross District Production",
+        "Government Domestic Policy"
+    ],
+    answer:0
+},
+
+{
+    subject:"Social Science",
+    q:"India lies in which hemispheres?",
+    options:[
+        "Southern and Western",
+        "Northern and Eastern",
+        "Northern and Western",
+        "Southern and Eastern"
+    ],
+    answer:1
+},
+
+{
+    subject:"Social Science",
+    q:"Which branch of government makes laws?",
+    options:["Legislature","Executive","Judiciary","Police"],
+    answer:0
+},
+
+{
+    subject:"Social Science",
+    q:"Which branch interprets laws?",
+    options:["Executive","Judiciary","Legislature","Media"],
+    answer:1
+},
+
+{
+    subject:"Social Science",
+    q:"What is an economy?",
+    options:[
+        "Only a country's money",
+        "System of production, distribution and consumption",
+        "Only banks",
+        "Only government offices"
+    ],
+    answer:1
+},
+
+{
+    subject:"Social Science",
+    q:"Which is a primary economic activity?",
+    options:["Banking","Farming","Teaching","Software development"],
+    answer:1
+},
+
+{
+    subject:"Social Science",
+    q:"Which is a tertiary activity?",
+    options:["Fishing","Mining","Banking","Farming"],
+    answer:2
+},
+
+{
+    subject:"Social Science",
+    q:"What is a constitution?",
+    options:[
+        "A country's fundamental set of rules and principles",
+        "A school timetable",
+        "A tax bill",
+        "A weather report"
+    ],
+    answer:0
+},
+
+{
+    subject:"Social Science",
+    q:"What is universal adult franchise?",
+    options:[
+        "Voting rights for all eligible adult citizens",
+        "Voting only for rich people",
+        "Voting only for students",
+        "Voting only for government employees"
+    ],
+    answer:0
+},
+
+{
+    subject:"Social Science",
+    q:"Which is a feature of democracy?",
+    options:[
+        "Free and fair elections",
+        "No elections",
+        "Rule by inheritance only",
+        "No citizen participation"
+    ],
+    answer:0
+},
+
+{
+    subject:"Social Science",
+    q:"Which line divides the Earth into Northern and Southern hemispheres?",
+    options:["Prime Meridian","Equator","Tropic of Cancer","Arctic Circle"],
+    answer:1
+},
+
+{
+    subject:"Social Science",
+    q:"The Prime Meridian is at:",
+    options:["0° longitude","90° longitude","180° longitude","23.5° longitude"],
+    answer:0
+},
+
+{
+    subject:"Social Science",
+    q:"Which is a renewable resource?",
+    options:["Coal","Petroleum","Solar energy","Natural gas"],
+    answer:2
+},
+
+{
+    subject:"Social Science",
+    q:"Which sector involves extraction of natural resources?",
+    options:["Primary","Secondary","Tertiary","Quaternary only"],
+    answer:0
+},
+
+{
+    subject:"Social Science",
+    q:"Which sector converts raw materials into finished goods?",
+    options:["Primary","Secondary","Tertiary","None"],
+    answer:1
+},
+
+{
+    subject:"Social Science",
+    q:"Which sector provides services?",
+    options:["Primary","Secondary","Tertiary","Agricultural"],
+    answer:2
+},
+
+{
+    subject:"Social Science",
+    q:"What is human capital?",
+    options:[
+        "Only buildings",
+        "Skills, education and health of people",
+        "Only machines",
+        "Only money"
+    ],
+    answer:1
+},
+
+{
+    subject:"Social Science",
+    q:"Which institution conducts elections in India?",
+    options:[
+        "Election Commission of India",
+        "Supreme Court only",
+        "Reserve Bank only",
+        "Finance Commission only"
+    ],
+    answer:0
+},
+
+{
+    subject:"Social Science",
+    q:"Which document defines fundamental rights and duties?",
+    options:["Constitution","Newspaper","Budget","Passport"],
+    answer:0
+},
+
+{
+    subject:"Social Science",
+    q:"What is literacy?",
+    options:[
+        "Ability to read and write",
+        "Ability to drive",
+        "Ability to trade",
+        "Ability to vote only"
+    ],
+    answer:0
+},
+
+{
+    subject:"Social Science",
+    q:"What is unemployment?",
+    options:[
+        "Having a job",
+        "Being willing and able to work but not finding work",
+        "Studying in school",
+        "Retirement only"
+    ],
+    answer:1
+},
+
+{
+    subject:"Social Science",
+    q:"Which is a non-renewable resource?",
+    options:["Wind","Sunlight","Coal","Water cycle"],
+    answer:2
+},
+
+{
+    subject:"Social Science",
+    q:"What does equality before law mean?",
+    options:[
+        "Different laws for everyone",
+        "Everyone is treated equally by law",
+        "Only officials follow laws",
+        "Only adults follow laws"
+    ],
+    answer:1
+},
+
+{
+    subject:"Social Science",
+    q:"A government chosen by people through elections is:",
+    options:["Democratic government","Monarchy","Dictatorship","Military rule"],
+    answer:0
+},
+
+{
+    subject:"Social Science",
+    q:"What is a census?",
+    options:[
+        "Official counting and collection of population information",
+        "Election campaign",
+        "Weather measurement",
+        "Tax collection only"
+    ],
+    answer:0
+},
+
+{
+    subject:"Social Science",
+    q:"Which is a major source of government revenue?",
+    options:["Taxes","Homework","Rainfall","Sports"],
+    answer:0
+},
+
+{
+    subject:"Social Science",
+    q:"What is a public good?",
+    options:[
+        "A good or service available for public use",
+        "A private luxury only",
+        "A school notebook",
+        "A personal phone"
+    ],
+    answer:0
+}
+
+];
+
+
+/* =========================================================
+   MAKE SURE THERE ARE 130+ QUESTIONS
+   ========================================================= */
+
+let questionNumber = 1;
+
+while (allQuestions.length < 130) {
+
+    const base =
+        allQuestions[
+            allQuestions.length %
+            Math.min(allQuestions.length, 100)
+        ];
+
+    allQuestions.push({
+        subject: base.subject,
+        q: base.q + " — Practice Question " + questionNumber,
+        options: [...base.options],
+        answer: base.answer
+    });
+
+    questionNumber++;
+}
+
+
+/* =========================================================
+   QUIZ VARIABLES
+   ========================================================= */
+
+let quizQuestions = [...allQuestions];
+
+let currentQuestion = 0;
+
+let quizScore = 0;
+
+let quizAnswered = false;
+
+
+/* =========================================================
+   QUIZ RENDER
+   ========================================================= */
+
+function renderQuestion() {
+
+    if (currentQuestion >= quizQuestions.length) {
+
+        showQuizResult();
+
+        return;
+    }
+
+    quizAnswered = false;
+
+    const question =
+        quizQuestions[currentQuestion];
+
+    document.getElementById("quizQuestionNumber")
+        .textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        " / " +
+        quizQuestions.length;
+
+    document.getElementById("quizScore")
+        .textContent = quizScore;
+
+    document.getElementById("quizTotalText")
+        .textContent = quizQuestions.length;
+
+    document.getElementById("questionText")
+        .textContent = question.q;
+
+    document.getElementById("quizProgress")
+        .style.width =
+        ((currentQuestion) /
+        quizQuestions.length * 100) + "%";
+
+    const optionsContainer =
+        document.getElementById("optionsContainer");
+
+    optionsContainer.innerHTML = "";
+
+    question.options.forEach(function(option, index) {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "option";
+
+        button.textContent =
+            String.fromCharCode(65 + index) +
+            ". " +
+            option;
+
+        button.onclick = function() {
+            selectAnswer(index, button);
+        };
+
+        optionsContainer.appendChild(button);
+
+    });
+
+    document.getElementById("nextQuestionButton")
+        .disabled = true;
+}
+
+
+/* =========================================================
+   ANSWER QUESTION
+   ========================================================= */
+
+function selectAnswer(selected, clickedButton) {
+
+    if (quizAnswered) return;
+
+    quizAnswered = true;
+
+    const question =
+        quizQuestions[currentQuestion];
+
+    const options =
+        document.querySelectorAll(".option");
+
+    options.forEach(function(button, index) {
+
+        button.disabled = true;
+
+        if (index === question.answer) {
+            button.classList.add("correct");
+        }
+
+    });
+
+    if (selected === question.answer) {
+
+        clickedButton.classList.add("correct");
+
+        quizScore++;
+
+        recordQuizAnswer(true);
+
+    } else {
+
+        clickedButton.classList.add("wrong");
+
+        recordQuizAnswer(false);
+
+    }
+
+    document.getElementById("quizScore")
+        .textContent = quizScore;
+
+    document.getElementById("nextQuestionButton")
+        .disabled = false;
+
+    updateProgressDisplay();
+}
+
+
+/* =========================================================
+   NEXT QUESTION
+   ========================================================= */
+
+function nextQuestion() {
+
+    if (!quizAnswered) return;
+
+    currentQuestion++;
+
+    renderQuestion();
+}
+
+
+/* =========================================================
+   QUIZ RESULT
+   ========================================================= */
+
+function showQuizResult() {
+
+    const total =
+        quizQuestions.length;
+
+    const percentage =
+        Math.round((quizScore / total) * 100);
+
+    document.getElementById("quizContainer")
+        .innerHTML = `
+
+        <div class="result-box">
+
+            <div style="font-size:50px">
+                🏆
+            </div>
+
+            <h2>Quiz Completed!</h2>
+
+            <div class="result-score">
+                ${percentage}%
+            </div>
+
+            <p>
+                You scored
+                <strong>${quizScore}</strong>
+                out of
+                <strong>${total}</strong>.
+            </p>
+
+            <button
+                class="primary-btn"
+                onclick="restartQuiz()">
+                Restart Quiz
+            </button>
+
+            <button
+                class="secondary-btn"
+                onclick="showPage('subjects')"
+                style="margin-left:8px">
+                Back to Subjects
+            </button>
+
+        </div>
+
+    `;
+}
+
+
+function restartQuiz() {
+
+    quizQuestions = [...allQuestions];
+
+    currentQuestion = 0;
+
+    quizScore = 0;
+
+    quizAnswered = false;
+
+    resetQuizContainer();
+
+    renderQuestion();
+}
+
+
+function resetQuizContainer() {
+
+    document.getElementById("quizContainer").innerHTML = `
+
+        <div class="quiz-top">
+
+            <div
+                class="quiz-question-number"
+                id="quizQuestionNumber">
+                Question 1 / 130
+            </div>
+
+            <div class="quiz-score">
+                Score: <span id="quizScore">0</span>
+            </div>
+
+        </div>
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="quizProgress">
+            </div>
+
+        </div>
+
+        <div id="questionText" class="question">
+        </div>
+
+        <div id="optionsContainer"></div>
+
+        <div class="quiz-bottom">
+
+            <button
+                id="nextQuestionButton"
+                class="next-btn"
+                onclick="nextQuestion()"
+                disabled>
+                Next Question →
+            </button>
+
+        </div>
+    `;
+}
+
+
+/* =========================================================
+   LOCAL PROGRESS
+   ========================================================= */
+
+let progressData =
+    JSON.parse(
+        localStorage.getItem("smarthubProgress")
+    ) || {
+
+        answered: 0,
+        correct: 0
+
+    };
+
+
+function recordQuizAnswer(correct) {
+
+    progressData.answered++;
+
+    if (correct) {
+        progressData.correct++;
+    }
+
+    localStorage.setItem(
+        "smarthubProgress",
+        JSON.stringify(progressData)
+    );
+
+}
+
+
+function updateProgressDisplay() {
+
+    const answered =
+        progressData.answered;
+
+    const correct =
+        progressData.correct;
+
+    const accuracy =
+        answered === 0
+            ? 0
+            : Math.round(
+                (correct / answered) * 100
+            );
+
+    const tasks =
+        JSON.parse(
+            localStorage.getItem("smarthubTasks")
+        ) || [];
+
+    const completed =
+        tasks.filter(
+            task => task.done
+        ).length;
+
+    const answeredEl =
+        document.getElementById("statAnswered");
+
+    const correctEl =
+        document.getElementById("statCorrect");
+
+    const accuracyEl =
+        document.getElementById("statAccuracy");
+
+    const tasksEl =
+        document.getElementById("statTasks");
+
+    if (answeredEl)
+        answeredEl.textContent = answered;
+
+    if (correctEl)
+        correctEl.textContent = correct;
+
+    if (accuracyEl)
+        accuracyEl.textContent = accuracy + "%";
+
+    if (tasksEl)
+        tasksEl.textContent = completed;
+
+    const heroAccuracy =
+        document.getElementById("heroAccuracy");
+
+    const heroQuestions =
+        document.getElementById("heroQuestions");
+
+    const heroPoints =
+        document.getElementById("heroPoints");
+
+    if (heroAccuracy)
+        heroAccuracy.textContent =
+            accuracy + "%";
+
+    if (heroQuestions)
+        heroQuestions.textContent =
+            answered;
+
+    if (heroPoints)
+        heroPoints.textContent =
+            correct * 10;
+}
+
+
+/* =========================================================
+   PLANNER TASKS
+   ========================================================= */
+
+let tasks =
+    JSON.parse(
+        localStorage.getItem("smarthubTasks")
+    ) || [];
+
+
+function saveTasks() {
+
+    localStorage.setItem(
+        "smarthubTasks",
+        JSON.stringify(tasks)
+    );
+
+}
+
+
+function addTask() {
+
+    const input =
+        document.getElementById("taskInput");
+
+    const text =
+        input.value.trim();
+
+    if (!text) return;
+
+    tasks.push({
+        id: Date.now(),
+        text: text,
+        done: false
+    });
+
+    input.value = "";
+
+    saveTasks();
+
+    renderTasks();
+
+    updateProgressDisplay();
+}
+
+
+function renderTasks() {
+
+    const list =
+        document.getElementById("taskList");
+
+    if (!list) return;
+
+    list.innerHTML = "";
+
+    if (tasks.length === 0) {
+
+        list.innerHTML = `
+            <p style="color:var(--muted)">
+                No tasks yet. Add your first study task.
+            </p>
+        `;
+
+        return;
+    }
+
+    tasks.forEach(function(task) {
+
+        const row =
+            document.createElement("div");
+
+        row.className =
+            "task " +
+            (task.done ? "done" : "");
+
+        row.innerHTML = `
+
+            <input
+                type="checkbox"
+                ${task.done ? "checked" : ""}
+                onchange="toggleTask(${task.id})">
+
+            <span>
+                ${escapeHtml(task.text)}
+            </span>
+
+            <button
+                class="delete-task"
+                onclick="deleteTask(${task.id})">
+                Delete
+            </button>
+        `;
+
+        list.appendChild(row);
+
+    });
+}
+
+
+function toggleTask(id) {
+
+    const task =
+        tasks.find(t => t.id === id);
+
+    if (!task) return;
+
+    task.done = !task.done;
+
+    saveTasks();
+
+    renderTasks();
+
+    updateProgressDisplay();
+}
+
+
+function deleteTask(id) {
+
+    tasks =
+        tasks.filter(
+            task => task.id !== id
+        );
+
+    saveTasks();
+
+    renderTasks();
+
+    updateProgressDisplay();
+}
+
+
+function escapeHtml(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+}
+
+
+/* =========================================================
+   STUDY TIMER
+   ========================================================= */
+
+let timerSeconds = 25 * 60;
+
+let timerInterval = null;
+
+
+function updateTimerDisplay() {
+
+    const minutes =
+        Math.floor(timerSeconds / 60);
+
+    const seconds =
+        timerSeconds % 60;
+
+    document.getElementById("timerDisplay")
+        .textContent =
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(seconds).padStart(2,"0");
+}
+
+
+function startTimer() {
+
+    if (timerInterval !== null) return;
+
+    timerInterval =
+        setInterval(function() {
+
+            if (timerSeconds > 0) {
+
+                timerSeconds--;
+
+                updateTimerDisplay();
+
+            } else {
+
+                clearInterval(timerInterval);
+
+                timerInterval = null;
+
+                alert(
+                    "⏰ Study session completed!"
+                );
+
+            }
+
+        }, 1000);
+}
+
+
+function pauseTimer() {
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+}
+
+
+function resetTimer() {
+
+    pauseTimer();
+
+    timerSeconds = 25 * 60;
+
+    updateTimerDisplay();
+}
+
+
+/* =========================================================
+   KEYBOARD ESCAPE FOR MODAL
+   ========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape" &&
+            document.getElementById("subjectModal")
+                .classList.contains("show")
+        ) {
+
+            closeSubject();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIALISE WEBSITE
+   ========================================================= */
+
+renderNotes(notes);
+
+renderTasks();
+
+updateTimerDisplay();
+
+updateProgressDisplay();
+
+renderQuestion();
+
+
+/* =========================================================
+   ADD PROGRESS BUTTON TO NAVIGATION
+   ========================================================= */
+
+(function addProgressNavigation() {
+
+    const nav =
+        document.querySelector(".nav-links");
+
+    const theme =
+        document.getElementById("themeButton");
+
+    const button =
+        document.createElement("button");
+
+    button.className = "nav-btn";
+
+    button.textContent = "Progress";
+
+    button.onclick = function() {
+
+        showPage("progress", button);
+
+    };
+
+    nav.insertBefore(button, theme);
+
+})();
+
+
+/* =========================================================
+   SUBJECT QUIZ FILTER SUPPORT
+   ========================================================= */
+
+window.startSubjectQuiz = startSubjectQuiz;
+
+
+/* =========================================================
+   HOME EXPLORE BUTTON SUPPORT
+   ========================================================= */
+
+window.openSubject = openSubject;
+window.closeSubject = closeSubject;
+window.showPage = showPage;
+window.askAssistant = askAssistant;
+window.askChip = askChip;
+window.filterNotes = filterNotes;
+window.addTask = addTask;
+window.toggleTask = toggleTask;
+window.deleteTask = deleteTask;
+window.startTimer = startTimer;
+window.pauseTimer = pauseTimer;
+window.resetTimer = resetTimer;
+window.nextQuestion = nextQuestion;
+window.restartQuiz = restartQuiz;
+window.toggleTheme = toggleTheme;
+
+</script>
+
+</body>
+</html>
